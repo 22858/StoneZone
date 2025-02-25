@@ -1,18 +1,21 @@
 package net.mehvahdjukaar.stone_zone.modules.fabric.macaws;
 
 import net.kikoz.mcwwindows.objects.*;
+import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
+import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.stone_zone.api.SZModule;
 import net.mehvahdjukaar.stone_zone.api.StonezoneEntrySet;
 import net.mehvahdjukaar.stone_zone.api.set.StoneType;
 import net.mehvahdjukaar.stone_zone.api.set.StoneTypeRegistry;
-import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.MapColor;
 
 import static net.mehvahdjukaar.stone_zone.misc.ModelUtils.removeTintIndexFromParentModel;
 
@@ -34,10 +37,13 @@ public class MacawWindowsModule extends SZModule {
         windows = StonezoneEntrySet.of(StoneType.class, "window",
                         getModBlock("stone_window"), StoneTypeRegistry::getStoneType,
                         stoneType -> new ConnectedWindow(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.6F, 1.2F)
                                 .requiresCorrectToolForDrops()
                         )
                 )
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //TEXTURES: stone
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
@@ -50,10 +56,13 @@ public class MacawWindowsModule extends SZModule {
         window2s = StonezoneEntrySet.of(StoneType.class, "window2",
                         getModBlock("stone_window2"), StoneTypeRegistry::getStoneType,
                         stoneType -> new WindowBarred(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.6F, 1.2F)
                                 .requiresCorrectToolForDrops()
                         )
                 )
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //TEXTURES: stone
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
@@ -66,10 +75,13 @@ public class MacawWindowsModule extends SZModule {
         four_windows = StonezoneEntrySet.of(StoneType.class, "four_window",
                         getModBlock("stone_four_window"), StoneTypeRegistry::getStoneType,
                         stoneType -> new WindowBarred(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.6F, 1.2F)
                                 .requiresCorrectToolForDrops()
                         )
                 )
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //TEXTURES: stone
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
@@ -82,6 +94,8 @@ public class MacawWindowsModule extends SZModule {
         brick_gothics = StonezoneEntrySet.of(StoneType.class, "brick_gothic",
                         getModBlock("stone_brick_gothic"), StoneTypeRegistry::getStoneType,
                         stoneType -> new GothicWindow(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.5F, 2.0F)
                                 .requiresCorrectToolForDrops()
                         )
@@ -99,12 +113,15 @@ public class MacawWindowsModule extends SZModule {
         brick_arrow_slits = StonezoneEntrySet.of(StoneType.class, "brick_arrow_slit",
                         getModBlock("stone_brick_arrow_slit"), StoneTypeRegistry::getStoneType,
                         stoneType -> new ArrowSill(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.5F, 2.0F)
                                 .requiresCorrectToolForDrops()
                         )
 
                 )
                 .requiresChildren("bricks", "brick_slab") //REASON: textures, recipes
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //TEXTURES: bricks
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
@@ -117,10 +134,13 @@ public class MacawWindowsModule extends SZModule {
         pane_windows = StonezoneEntrySet.of(StoneType.class, "pane_window",
                         getModBlock("stone_pane_window"), StoneTypeRegistry::getStoneType,
                         stoneType -> new Window(Utils.copyPropertySafe(stoneType.stone)
+                                .mapColor(MapColor.COLOR_GRAY)
+                                .sound(SoundType.STONE)
                                 .strength(0.6F, 1.2F)
                                 .requiresCorrectToolForDrops()
                         )
                 )
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //TEXTURES: stone
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
